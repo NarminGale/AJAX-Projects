@@ -4,33 +4,15 @@ const content = document.querySelector('.content')
 const img = document.querySelector('.container img')
 
 btn.addEventListener('click', () => {
-  getData(URL)
+  fetch(URL)
+    .then((data) => data.json())
     .then((response) => displayData(response))
     .catch((error) => console.log(error))
 })
 
-function getData(url) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest()
-    xhr.open('GET', url)
-    xhr.send()
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState != 4) {
-        return
-      }
-
-      if (xhr.status === 200) {
-        resolve(xhr.responseText)
-      } else {
-        reject({ status: xhr.status, text: xhr.statusText })
-      }
-    }
-  })
-}
-
-function displayData(data) {
+function displayData({ value: joke }) {
   img.classList.add('shake-img')
-  const { value: joke } = JSON.parse(data)
+  // const { value: joke } = JSON.parse(data)
   content.textContent = joke
 
   const random = Math.random() * 1000
