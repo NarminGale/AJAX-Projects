@@ -11,7 +11,6 @@ const displayDrinks = ({ drinks }) => {
   const newDrinks = drinks
     .map((drink) => {
       const { idDrink: id, strDrink: name, strDrinkThumb: image } = drink
-      console.log(drink)
       return `<!-- single drink -->
         <a href="./drink.html">
           <article class="cocktail" data-id="${id}">
