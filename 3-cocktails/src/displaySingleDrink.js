@@ -3,7 +3,6 @@ import get from './getElement.js'
 
 const displayDrink = (data) => {
   hideLoading()
-  console.log(data)
   const drink = data.drinks[0]
   const { strDrinkThumb: image, strDrink: name, strInstruction: desc } = drink
   const list = [
